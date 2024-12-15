@@ -52,20 +52,22 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">GeoTransfer: Generalizable Few-Shot Multi-View Reconstruction via Transfer Learning</h1>
+            <h1 class="title is-1 publication-title">Toward Robust Neural Reconstruction from Sparse Point Sets</h1>
             <div class="is-size-3 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=COw5y4EAAAAJ&hl=en" target="_blank">Shubhendu Jena</a>,</span>
+                <a href="https://ouasfi.github.io/" target="_blank">Amine Ouasfi</a>,</span>
                 <span class="author-block">
-                  <a href="https://scholar.google.com/citations?user=6DKOj0oAAAAJ&hl=fr" target="_blank">Franck Multon</a>,</span>
+                  <a href="https://scholar.google.com/citations?user=6DKOj0oAAAAJ&hl=fr" target="_blank">Shubhendu Jena</a>,</span>
+                  <span class="author-block">
+                    <a href="https://boukhayma.github.io/" target="_blank">Eric Marchand</a></span>
                   <span class="author-block">
                     <a href="https://boukhayma.github.io/" target="_blank">Adnane Boukhayma</a></span>
                   </span>
                   </div>
 
                   <div class="is-size-3 publication-authors">
-                    <span class="author-block">INRIA<br><b>ECCVW 2024</b></span>
+                    <span class="author-block">INRIA<br><b></b></span>
                     <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
                   </div>
 
@@ -95,12 +97,12 @@
 
                   <!-- Github link -->
                   <span class="link-block">
-                    <a href="https://github.com/Shubhendu-Jena/Geo-Transfer" target="_blank"
+                    <a href="https://github.com/ouasfi/" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
                     </span>
-                    <span>Code</span>
+                    <span>Code (Coming soon) </span>
                   </a>
                 </span>
 
@@ -127,10 +129,10 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img src="./static/pipeline.png" class="center"></img>
+      <img src="./static/teaser.png" class="center"></img>
       <div class="content has-text-justified">
         <p>
-          <b>Fast training of GeoTransfer.</b> Our transfer learning approach leads to a dramatic reduction in training time in learning a generalizable occupancy network offering SOTA 3D reconstruction performance. The training time reduces by orders of magnitude (i.e. from several days to 3.5 hrs)!
+          <b>Robust Neural Reconstruction.</b> Our method fits a neural SDF to a sparse noisy point cloud solely, using a distributionally robust loss function. Compared to the state-of-the-art, our method provides more faithful and robust reconstructions.
         </p>
       </div>
     </div>
@@ -146,7 +148,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            This paper presents a novel approach for sparse 3D reconstruction by leveraging the expressive power of Neural Radiance Fields (NeRFs) and fast transfer of their features to learn accurate occupancy fields. Existing 3D reconstruction methods from sparse inputs still struggle with capturing intricate geometric details and can suffer from limitations in handling occluded regions. On the other hand, NeRFs excel in modeling complex scenes but do not offer means to extract meaningful geometry. Our proposed method offers the best of both worlds by transferring the information encoded in NeRF features to derive an accurate occupancy field representation. We utilize a pre-trained, generalizable state-of-the-art NeRF network to capture detailed scene radiance information, and rapidly transfer this knowledge to train a generalizable implicit occupancy network. This process helps in leveraging the knowledge of the scene geometry encoded in the generalizable NeRF prior and refining it to learn occupancy fields, facilitating a more precise generalizable representation of 3D space. The transfer learning approach leads to a dramatic reduction in training time, by orders of magnitude (i.e. from several days to 3.5 hrs), obviating the need to train generalizable sparse surface reconstruction methods from scratch. Additionally, we introduce a novel loss on volumetric rendering weights that helps in the learning of accurate occupancy fields, along with a normal loss that helps in global smoothing of the occupancy fields. We evaluate our approach on the DTU dataset and demonstrate state-of-the-art performance in terms of reconstruction accuracy, especially in challenging scenarios with sparse input data and occluded regions. We furthermore demonstrate the generalization capabilities of our method by showing qualitative results on the Blended MVS dataset without any retraining.
+            We consider the challenging problem of learning Signed Distance Functions (SDF) from sparse and noisy 3D point clouds. In contrast to recent methods that depend on smoothness priors, our method, rooted in a distributionally robust optimization (DRO) framework, incorporates a regularization term that leverages samples from the uncertainty regions of the model to improve the learned SDFs. Thanks to tractable dual formulations, we show that this framework enables a stable and efficient optimization of SDFs in the absence of ground truth supervision. Using a variety of synthetic and real data evaluations from different modalities, we show that of our DRO based learning framework can improve SDF learning with respect to baselines and the state-of-the-art.
           </p>
         </div>
       </div>
@@ -163,22 +165,23 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Comparison Results</h2>
+        <img src="./static/faust.png" class="center"></img>
+        <div class="content has-text-justified">
+          <p>
+            Visual comparisons on the sparse reconstruction setting of Faust Dataset.
+          </p>
+        </div>
+        
+        <img src="./static/sfm_4.png" class="center"></img>
+        <div class="content has-text-justified">
+          <p>
+            Visual comparisons of Reconstructions from VGGSfM point clouds of sparse views from BlendedMVS  and Tanks & Temples datasets.
+          </p>
+        </div>
         <img src="./static/vis_1.png" class="center"></img>
         <div class="content has-text-justified">
           <p>
-            Visual comparisons on the sparse reconstruction setting of DTU dataset.
-          </p>
-        </div>
-        <img src="./static/vis_2.png" class="center"></img>
-        <div class="content has-text-justified">
-          <p>
-            Visual comparisons on the sparse novel-view synthesis setting of DTU dataset.
-          </p>
-        </div>
-        <img src="./static/bmvs.png" class="center"></img>
-        <div class="content has-text-justified">
-          <p>
-            Visual comparison of surface reconstruction results on BlendedMVS dataset.
+            Visual comparisons of SemanticPOSS reconstructions from road scene LiDAR data.
           </p>
         </div>
       </div>
@@ -299,8 +302,8 @@
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
       <pre><code>@article{jena2024geotransfer,
-  title={GeoTransfer: Generalizable Few-Shot Multi-View Reconstruction via Transfer Learning},
-  author={Jena, Shubhendu and Multon, Franck and Boukhayma, Adnane},
+  title={Toward Robust Neural Reconstruction from Sparse Point Sets},
+  author={Ouasfi, Amine and Jena, Shubendhu and Marchand, Eric and Boukhayma, Adnane},
   journal={arXiv preprint arXiv:2408.14724},
   year={2024}
 }</code></pre>
